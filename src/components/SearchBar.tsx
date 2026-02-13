@@ -15,7 +15,7 @@ export default function SearchBar({
         <input
           type="text"
           placeholder="Поиск по названию, адресу, телефону или email..."
-          className="w-full shadow-lg md:shadow-md rounded-full focus:ring-2 focus:ring-blue-500 pl-4 pr-10 py-3 md:py-2 placeholder-gray-500 bg-white border border-gray-200 md:border-gray-300"
+          className="w-full text-sm shadow-lg md:shadow-md rounded-md focus:ring-2 focus:ring-blue-500 pl-4 pr-10 py-3 md:py-2 placeholder-gray-500 bg-white border border-gray-200 md:border-gray-300"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

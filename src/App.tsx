@@ -24,7 +24,7 @@ function App() {
         }}
       >
         <div className="bg-gray-100 min-h-screen pb-32">
-          <div className="container mx-auto max-w-7xl px-4 py-6">
+          <div className="container mx-auto max-w-7xl">
             <Routes>
               <Route path="/" element={<ListPage isMobile={isMobile} />} />
               <Route path="/view/:id" element={<DetailPage />} />

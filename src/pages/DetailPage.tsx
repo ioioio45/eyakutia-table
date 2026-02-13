@@ -77,7 +77,7 @@ export default function DetailPage() {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6 text-center py-12 text-gray-500">
+      <div className="bg-white rounded-xl p-6 text-center py-12 text-gray-500">
         Загрузка...
       </div>
     );
@@ -85,7 +85,7 @@ export default function DetailPage() {
 
   if (error || !details) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6 text-center py-12 text-gray-500">
+      <div className="bg-white rounded-xl p-6 text-center py-12 text-gray-500">
         {error || "Учреждение не найдено"}
         <div className="mt-4">
           <button
