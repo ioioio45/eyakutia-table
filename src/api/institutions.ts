@@ -4,12 +4,15 @@ import type {
   InstitutionDetails,
 } from "../types/institution";
 
-const PROXY_URL = "/api/proxy";
+const API_URL =
+  "https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitutions";
+const INSTITUTION_URL =
+  "https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitution";
 const MUNICIPALITY_ID = "ac1d422d-747c-42d9-997b-a4530166797c";
 
 export async function fetchInstitutions(): Promise<Institution[]> {
   try {
-    const response = await fetch(PROXY_URL, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,14 +23,9 @@ export async function fetchInstitutions(): Promise<Institution[]> {
         Type: 1,
       }),
     });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
     return await response.json();
   } catch (error) {
-    console.error("Fetch institutions error:", error);
+    console.error(error);
     return [];
   }
 }
@@ -36,7 +34,7 @@ export async function fetchInstitutionDetails(
   id: string,
 ): Promise<InstitutionDetails | null> {
   try {
-    const response = await fetch(PROXY_URL, {
+    const response = await fetch(INSTITUTION_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,14 +45,9 @@ export async function fetchInstitutionDetails(
         InstitutionId: id,
       }),
     });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
     return await response.json();
   } catch (error) {
-    console.error("Fetch institution details error:", error);
+    console.error(error);
     return null;
   }
 }
@@ -65,6 +58,6 @@ export function getContactInfo(inst: Institution): ContactInfo {
     phone: contact.Phones || "",
     email: contact.Email || "",
     site: contact.SiteUrl || "",
-    address: contact.Address || inst.Address || "",
+    address: contact.Address || "",
   };
 }
