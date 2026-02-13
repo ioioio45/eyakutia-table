@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://edu.e-yakutia.ru/:match*"
+    }
+  ]
+}
