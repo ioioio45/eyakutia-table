@@ -5,9 +5,9 @@ import type {
 } from "../types/institution";
 
 const API_URL =
-  "https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitutions";
+  "/api/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitutions";
 const INSTITUTION_URL =
-  "https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitution";
+  "/api/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitution";
 const MUNICIPALITY_ID = "ac1d422d-747c-42d9-997b-a4530166797c";
 
 export async function fetchInstitutions(): Promise<Institution[]> {
