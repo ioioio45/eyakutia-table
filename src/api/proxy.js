@@ -4,21 +4,21 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
 
-  // Handle preflight OPTIONS request
+  // OPTIONS preflight
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Only allow POST
+  // Только POST
   if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Определяем какой URL использовать по наличию InstitutionId в body
   const body = req.body || {};
-  const targetUrl = body.InstitutionId 
+  
+  // Определяем target URL
+  const targetUrl = body.InstitutionId
     ? 'https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitution'
     : 'https://edu.e-yakutia.ru/Modules/INSTITUTIONSEARCHMODULE/Api/GetInstitutions';
 
@@ -29,12 +29,15 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
 
     const data = await response.json();
-    res.status(response.status).json(data);
+    return res.status(response.status).json(data);
   } catch (error) {
-    res.status(500).json({ error: 'Proxy error', details: error.message });
+    return res.status(500).json({ 
+      error: 'Proxy error', 
+      message: error.message 
+    });
   }
 }
