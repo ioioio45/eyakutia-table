@@ -4,7 +4,7 @@ import type {
   InstitutionDetails,
 } from "../types/institution";
 
-const PROXY_URL = "/api/proxy"; // один URL для всех запросов
+const PROXY_URL = "https://eyakutia-table.vercel.app/api/proxy";
 const MUNICIPALITY_ID = "ac1d422d-747c-42d9-997b-a4530166797c";
 
 export async function fetchInstitutions(): Promise<Institution[]> {
