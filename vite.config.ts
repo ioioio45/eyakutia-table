@@ -5,5 +5,15 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: './'
+  base: './',
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://edu.e-yakutia.ru',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false
+      }
+    }
+  }
 });
