@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: frontend_max_mini_app
+    ports:
+      - "80:80"
