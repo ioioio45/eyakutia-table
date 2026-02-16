@@ -34,12 +34,10 @@ export function useInstitutions() {
       const filtered = institutions.filter((inst) => {
         const name = (inst.ShortName || inst.FullName || "").toLowerCase();
         const address = (inst.ContactInfo?.Address || "").toLowerCase();
-        const { phone, email } = getContactInfo(inst);
+
         return (
           name.includes(q) ||
-          address.includes(q) ||
-          phone.toLowerCase().includes(q) ||
-          email.toLowerCase().includes(q)
+          address.includes(q)
         );
       });
       setFiltered(filtered);
