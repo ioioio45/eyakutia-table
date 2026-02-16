@@ -1,7 +1,8 @@
 services:
   frontend:
-    build:
-      context: .
-    container_name: frontend_max_mini_app
+    build: .
+    container_name: frontend_eyakutia_table_max_mini_app
     ports:
-      - "80:80"
+      - "15000:3000"
+    volumes:
+      - ./src:/app/src
